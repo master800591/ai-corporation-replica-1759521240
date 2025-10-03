@@ -1,0 +1,276 @@
+Metadata-Version: 2.4
+Name: ai-personal-assistant
+Version: 2.0.0
+Summary: A comprehensive toolkit for AI model management, autonomous development, and peer-to-peer AI collaboration
+Author-email: Steve Cornell <your.email@example.com>
+Maintainer-email: Steve Cornell <your.email@example.com>
+License: This is free and unencumbered software released into the public domain.
+        
+        Anyone is free to copy, modify, publish, use, compile, sell, or
+        distribute this software, either in source code form or as a compiled
+        binary, for any purpose, commercial or non-commercial, and by any
+        means.
+        
+        In jurisdictions that recognize copyright laws, the author or authors
+        of this software dedicate any and all copyright interest in the
+        software to the public domain. We make this dedication for the benefit
+        of the public at large and to the detriment of our heirs and
+        successors. We intend this dedication to be an overt act of
+        relinquishment in perpetuity of all present and future rights to this
+        software under copyright law.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+        EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+        MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+        IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+        OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+        ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+        OTHER DEALINGS IN THE SOFTWARE.
+        
+        For more information, please refer to <https://unlicense.org>
+        
+Project-URL: Homepage, https://github.com/yourusername/AI_personal_assistant
+Project-URL: Documentation, https://yourusername.github.io/AI_personal_assistant
+Project-URL: Repository, https://github.com/yourusername/AI_personal_assistant.git
+Project-URL: Bug Tracker, https://github.com/yourusername/AI_personal_assistant/issues
+Keywords: ai,ollama,llm,p2p,automation,development
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Topic :: System :: Distributed Computing
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: ollama>=0.3.0
+Requires-Dist: requests>=2.31.0
+Requires-Dist: python-dateutil>=2.8.2
+Requires-Dist: pathlib-mate>=1.3.0
+Provides-Extra: p2p
+Requires-Dist: websockets>=12.0; extra == "p2p"
+Requires-Dist: aiohttp>=3.9.0; extra == "p2p"
+Requires-Dist: upnpclient>=0.0.8; extra == "p2p"
+Requires-Dist: cryptography>=41.0.0; extra == "p2p"
+Requires-Dist: uvloop>=0.19.0; sys_platform != "win32" and extra == "p2p"
+Provides-Extra: crewai
+Requires-Dist: crewai>=0.1.0; extra == "crewai"
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.21.0; extra == "dev"
+Requires-Dist: pytest-cov>=4.1.0; extra == "dev"
+Requires-Dist: black>=23.0.0; extra == "dev"
+Requires-Dist: flake8>=6.0.0; extra == "dev"
+Requires-Dist: mypy>=1.5.0; extra == "dev"
+Requires-Dist: pre-commit>=3.4.0; extra == "dev"
+Requires-Dist: sphinx>=7.1.0; extra == "dev"
+Requires-Dist: sphinx-rtd-theme>=1.3.0; extra == "dev"
+Provides-Extra: all
+Requires-Dist: ai-personal-assistant[crewai,dev,p2p]; extra == "all"
+Dynamic: license-file
+
+# AI Personal Assistant Toolkit
+
+A comprehensive toolkit for AI model management, autonomous development, and peer-to-peer AI collaboration.
+
+## 🚀 Project Overview
+
+This toolkit provides three integrated components:
+
+1. **🦙 Ollama Toolkit Suite** - Complete management and interaction layer for Ollama LLMs
+2. **🤖 AI Platform Enhanced** - Autonomous development platform with code generation 
+3. **🔗 P2P Toolkit** - Peer-to-peer communication and distributed AI capabilities
+4. **🔐 Security Utilities** - Authentication, cryptography, and user management
+
+## 🔐 Security Features
+
+The toolkit includes comprehensive security utilities:
+
+- **User Authentication**: Secure user registration, login, and session management
+- **Password Security**: PBKDF2 hashing with salt and strength validation
+- **Cryptographic Operations**: Key generation, digital signatures, and message verification
+- **Secure Sessions**: Time-based expiration with optional cryptographic signatures
+- **Utility Functions**: Secure hashing, random token generation, and data encoding
+
+### Quick Security Example
+
+```python
+from ai_assistant.utils import create_security_manager
+
+# Create security manager
+manager = create_security_manager()
+
+# Create user with cryptographic keys
+user_result = manager.create_secure_user(
+    "alice", "alice@example.com", "SecurePass123!",
+    generate_keys=True
+)
+
+# Authenticate and sign a message
+auth_result = manager.authenticate_and_sign(
+    "alice", "SecurePass123!", 
+    message="Login at 2024-01-01 12:00:00"
+)
+
+# Verify message signature
+verify_result = manager.verify_signed_message(
+    "Login at 2024-01-01 12:00:00",
+    auth_result['signature']
+)
+```
+
+For detailed documentation, see [README_SECURITY_UTILS.md](README_SECURITY_UTILS.md).
+
+## 📦 Quick Start
+
+### Prerequisites
+- Python 3.11+
+- [Ollama](https://ollama.com/download) installed and running
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/AI_personal_assistant.git
+cd AI_personal_assistant
+
+# Install the package in development mode
+pip install -e .
+
+# Run the final setup and test script
+python scripts/final_setup.py
+
+# Or install with all optional dependencies
+pip install -e ".[all]"
+
+# For P2P capabilities only
+pip install -e ".[p2p]"
+```
+
+### Basic Usage
+
+```bash
+# Interactive model setup
+python -m ai_assistant.quick_setup
+
+# Command line model discovery
+python -m ai_assistant.discovery --popular
+
+# Test the toolkit
+python -m ai_assistant.test
+
+# Start P2P node
+python -m ai_assistant.p2p
+```
+
+## 🛠️ Development Setup
+
+```bash
+# Install development dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest
+
+# Run linting
+flake8 src/
+
+# Format code
+black src/
+```
+
+## 📁 Project Structure
+
+```
+ai_personal_assistant/
+├── src/ai_assistant/           # Main package
+│   ├── __init__.py
+│   ├── core/                   # Core functionality
+│   │   ├── ollama_toolkit.py
+│   │   ├── model_manager.py
+│   │   └── ai_platform.py
+│   ├── p2p/                    # P2P functionality
+│   │   ├── __init__.py
+│   │   ├── node.py
+│   │   ├── discovery.py
+│   │   └── integration.py
+│   ├── cli/                    # Command line interfaces
+│   │   ├── __init__.py
+│   │   ├── discovery.py
+│   │   └── quick_setup.py
+│   └── utils/                  # Utilities
+│       ├── __init__.py
+│       └── logging.py
+├── tests/                      # Test files
+├── docs/                       # Documentation
+├── examples/                   # Example scripts
+├── scripts/                    # Utility scripts
+├── pyproject.toml             # Project configuration
+├── requirements.txt           # Core dependencies
+└── README.md                  # This file
+```
+
+## 🔧 Configuration
+
+The toolkit uses environment variables and configuration files:
+
+```bash
+# Set Ollama host (optional)
+export OLLAMA_HOST=http://localhost:11434
+
+# Enable P2P encryption (optional)
+export P2P_ENCRYPTION=true
+
+# Set log level
+export AI_ASSISTANT_LOG_LEVEL=INFO
+```
+
+## 📖 Documentation
+
+- [Ollama Toolkit Guide](docs/ollama_toolkit.md)
+- [AI Platform Guide](docs/ai_platform.md) 
+- [P2P Toolkit Guide](docs/p2p_toolkit.md)
+- [API Reference](docs/api_reference.md)
+
+## 🧪 Testing
+
+```bash
+# Run all tests
+pytest
+
+# Run specific test categories
+pytest tests/test_ollama/
+pytest tests/test_p2p/
+pytest tests/test_platform/
+
+# Run with coverage
+pytest --cov=ai_assistant
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Ollama](https://ollama.com/) for the excellent local LLM platform
+- [CrewAI](https://crewai.com/) for multi-agent framework inspiration
+- The open source AI community
+
+## 🔗 Links
+
+- [GitHub Repository](https://github.com/yourusername/AI_personal_assistant)
+- [Documentation](https://yourusername.github.io/AI_personal_assistant)
+- [Issues](https://github.com/yourusername/AI_personal_assistant/issues)

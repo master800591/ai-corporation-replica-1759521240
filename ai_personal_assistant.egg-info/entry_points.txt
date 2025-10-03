@@ -1,0 +1,4 @@
+[console_scripts]
+ai-assistant = ai_assistant.cli:main
+ai-p2p = ai_assistant.cli.p2p:main
+ollama-discover = ai_assistant.cli.discovery:main
